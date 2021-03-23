@@ -15,7 +15,7 @@
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine-arm64v8
 WORKDIR /app
-COPY /bin ./
+COPY bin/. ./
 RUN ls
 
 # See: https://github.com/dotnet/announcements/issues/20
