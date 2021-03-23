@@ -13,10 +13,11 @@ WORKDIR /source/aspnetapp
 RUN dotnet publish -c release -o /app --self-contained false --no-restore
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine-arm64v8
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine-arm64v8 as final
 WORKDIR /app
 COPY --from=build /app ./
-RUN ls
+RUN ls /
+RUN ls /app
 RUN ls ./aspnetapp
 RUN uname -a
 
@@ -27,4 +28,4 @@ RUN uname -a
 #ENV LC_ALL=en_US.UTF-8
 #ENV LANG=en_US.UTF-8
 
-ENTRYPOINT ["./aspnetapp"]
+ENTRYPOINT ["dotnet", "aspnetapp.dll"]
