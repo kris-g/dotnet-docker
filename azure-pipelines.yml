@@ -33,7 +33,7 @@ steps:
     containerRegistry: 'Docker Hub (kr1sg)'
     command: 'login'
 
-- script: 'docker run --rm --privileged multiarch/qemu-user-static:register --reset'
+#- script: 'docker run --rm --privileged multiarch/qemu-user-static:register --reset'
 
 - script: |
     docker buildx create --use
